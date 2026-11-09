@@ -35,7 +35,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: dist/blog/browser
+          folder: dist/Portafolio-Adahi-Cruz-Cortes/browser
           branch: gh-pages
           clean: true
           token: ${{ secrets.GITHUB_TOKEN }}
