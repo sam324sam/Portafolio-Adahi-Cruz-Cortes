@@ -1,0 +1,129 @@
+/* ==========================================================================
+   CABECERA
+   ========================================================================== */
+header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
+  background: rgba(5, 8, 7, 0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--vidrio-borde);
+}
+
+.barra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.75em 1.5em;
+}
+
+/* Logo */
+.logo-enlace {
+  display: block;
+  line-height: 0;
+}
+
+.logo {
+  width: 3em;
+  height: auto;
+  border-radius: 50%;
+  transition: transform var(--transicion);
+}
+
+.logo:hover {
+  transform: scale(1.08);
+}
+
+/* Menú */
+.menu {
+  display: flex;
+  gap: 0.25em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.enlace {
+  display: block;
+  padding: 0.6em 1em;
+  color: var(--color-texto);
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color var(--transicion), background-color var(--transicion);
+}
+
+.enlace:hover,
+.enlace:focus-visible {
+  color: var(--color-primario-claro);
+  background-color: rgba(0, 191, 99, 0.1);
+}
+
+/* Hamburguesa */
+.hamburguesa {
+  display: none;
+  flex-direction: column;
+  gap: 0.4em;
+  padding: 0.5em;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburguesa .bar {
+  width: 1.75em;
+  height: 3px;
+  background: var(--color-texto);
+  border-radius: 2px;
+  transition: transform var(--transicion), opacity var(--transicion);
+}
+
+.hamburguesa.abierto .bar:nth-child(1) {
+  transform: translateY(calc(0.4em + 3px)) rotate(45deg);
+}
+
+.hamburguesa.abierto .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburguesa.abierto .bar:nth-child(3) {
+  transform: translateY(calc(-0.4em - 3px)) rotate(-45deg);
+}
+
+/* Responsive */
+@media (max-width: 1070px) {
+  .logo {
+    width: 2.5em;
+  }
+
+  .hamburguesa {
+    display: flex;
+  }
+
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    width: calc(100% + 3em);
+    margin: 0.75em -1.5em 0;
+    border-top: 1px solid var(--vidrio-borde);
+  }
+
+  .menu.abierto {
+    display: flex;
+  }
+
+  .menu li + li {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .enlace {
+    padding: 1em 1.5em;
+    text-align: center;
+    border-radius: 0;
+  }
+}

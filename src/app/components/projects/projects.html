@@ -1,0 +1,60 @@
+<span id="proyectos"></span>
+<section class="seccion_proyectos">
+  <div class="contenedor">
+    <h2 class="subtitulo">Proyectos</h2>
+
+    <div class="contenedor_proyectos">
+      @for (proyecto of proyectos; track proyecto.titulo; let i = $index) {
+        <article class="tarjeta_proyecto" [style.--i]="i">
+          <div class="contenedor_imagen">
+            <img
+              class="imagen_tarjeta"
+              [src]="proyecto.imagen"
+              [alt]="proyecto.titulo"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="contenido_tarjeta">
+            <h3 class="titulo_tarjeta">{{ proyecto.titulo }}</h3>
+
+            @if (proyecto.tecnologias?.length) {
+              <ul class="etiquetas">
+                @for (tec of proyecto.tecnologias; track tec) {
+                  <li class="etiqueta">{{ tec }}</li>
+                }
+              </ul>
+            }
+
+            <p class="descripcion_tarjeta">{{ proyecto.descripcion }}</p>
+
+            <div class="contenedor_botones">
+              @if (proyecto.web) {
+                <a
+                  [href]="proyecto.web"
+                  class="boton boton_primario"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-solid fa-globe icono_boton"></i>
+                  Probar en la web
+                </a>
+              }
+              @if (proyecto.repo) {
+                <a
+                  [href]="proyecto.repo"
+                  class="boton boton_secundario"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i class="fa-solid fa-box-archive icono_boton"></i>
+                  Ver repositorio
+                </a>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

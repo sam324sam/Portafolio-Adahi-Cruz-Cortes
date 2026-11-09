@@ -1,0 +1,200 @@
+.seccion_proyectos {
+  padding: 40px 24px;
+}
+
+.contenedor_proyectos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 420px));
+  justify-content: center;
+  gap: 2em;
+  width: 100%;
+  margin: 1em auto 0;
+}
+
+.tarjeta_proyecto {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  animation: aparecer-proyecto 0.6s ease backwards;
+  animation-delay: calc(var(--i, 0) * 0.1s);
+}
+
+.tarjeta_proyecto:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-primario-claro);
+  box-shadow: 0 14px 35px color-mix(in srgb, var(--color-primario) 30%, transparent);
+}
+
+.contenedor_imagen {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--color-primario-oscuro);
+}
+
+.contenedor_imagen::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 40%;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.55));
+  pointer-events: none;
+}
+
+.imagen_tarjeta {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.tarjeta_proyecto:hover .imagen_tarjeta {
+  transform: scale(1.06);
+}
+
+.contenido_tarjeta {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 1em;
+  padding: 1.5em;
+}
+
+.titulo_tarjeta {
+  margin: 0;
+  font-size: 1.6em;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #fff, var(--color-primario-claro));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.etiqueta {
+  padding: 0.25em 0.8em;
+  font-size: 0.8em;
+  font-weight: 500;
+  color: var(--color-primario-claro);
+  background: color-mix(in srgb, var(--color-primario) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-primario-claro) 40%, transparent);
+  border-radius: 999px;
+}
+
+.descripcion_tarjeta {
+  flex-grow: 1;
+  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.7;
+}
+
+.contenedor_botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8em;
+  margin-top: 0.5em;
+}
+
+.boton {
+  display: flex;
+  flex: 1 1 180px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  padding: 0.85em 1.4em;
+  font-size: 0.95em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.boton:hover,
+.boton:focus-visible {
+  transform: translateY(-3px);
+}
+
+.boton:focus-visible {
+  outline: 2px solid var(--color-primario-claro);
+  outline-offset: 3px;
+}
+
+.icono_boton {
+  transition: transform 0.3s ease;
+}
+
+.boton:hover .icono_boton {
+  transform: scale(1.2) rotate(5deg);
+}
+
+.boton_primario {
+  color: var(--color-texto);
+  background: var(--color-primario-oscuro);
+}
+
+.boton_primario:hover {
+  box-shadow: 0 6px 22px color-mix(in srgb, var(--color-primario) 60%, transparent);
+}
+
+.boton_secundario {
+  color: var(--color-primario-claro);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--color-primario-claro);
+}
+
+.boton_secundario:hover {
+  background: color-mix(in srgb, var(--color-primario-claro) 15%, transparent);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--color-primario-claro) 30%, transparent);
+}
+
+@keyframes aparecer-proyecto {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+}
+
+@media (max-width: 630px) {
+  .seccion_proyectos {
+    padding: 24px 16px;
+  }
+
+  .contenido_tarjeta {
+    padding: 1.2em;
+  }
+
+  .titulo_tarjeta {
+    font-size: 1.4em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta_proyecto {
+    animation: none;
+  }
+
+  .tarjeta_proyecto,
+  .imagen_tarjeta,
+  .boton,
+  .icono_boton {
+    transition: none;
+  }
+}

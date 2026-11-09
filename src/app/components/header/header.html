@@ -1,0 +1,31 @@
+<header [class.menu-abierto]="menuAbierto">
+  <nav class="barra" aria-label="Principal">
+    <a class="logo-enlace" href="#bienvenida" (click)="cerrarMenu()">
+      <img class="logo" src="assets/img_cabecera/logo.webp" alt="Logo" />
+    </a>
+
+    <button
+      type="button"
+      class="hamburguesa"
+      [class.abierto]="menuAbierto"
+      [attr.aria-expanded]="menuAbierto"
+      aria-controls="menu-principal"
+      aria-label="Abrir menú"
+      (click)="toggleMenu()"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+
+    <ul class="menu" id="menu-principal" [class.abierto]="menuAbierto">
+      @for (enlace of enlaces; track enlace.href) {
+        <li>
+          <a class="enlace" [href]="enlace.href" (click)="cerrarMenu()">
+            {{ enlace.texto }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+</header>
