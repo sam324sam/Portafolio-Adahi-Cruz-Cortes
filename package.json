@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "ng build --configuration production --base-href=https://sam324sam.github.io/Portafolio-Adahi-Cruz-Cortes/ && npx angular-cli-ghpages --dir=dist/Portafolio-Adahi-Cruz-Cortes/browser"
   },
   "prettier": {
     "printWidth": 100,
